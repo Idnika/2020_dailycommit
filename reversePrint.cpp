@@ -60,9 +60,47 @@ void free_singly_linked_list(SinglyLinkedListNode *node) {
 
 
 
+void reversePrint(SinglyLinkedListNode* head) {
+    vector<int> reverse;
+    SinglyLinkedListNode *current = head;
+
+    while (current->next != nullptr) {
+        reverse.push_back(current->data);
+        current = current->next;
+    }
+
+    reverse.push_back(current->data);
+
+    for (int i = reverse.size() - 1; i >= 0; i--) {
+        cout << reverse[i] << endl;
+    }
+}
+
+
+
 int main()
 {
 	int tests;
 	cin >> tests;
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+	for(int tests_itr = 0; tests_itr < tests; tests_itr++) {
+		SinglyLinkedList *llist = new SinglyLinkedList();
+
+		int llist_count;
+		cin >> llist_count;
+		cin.ignore(numeric_limits<streamsize>;:max(), '\n');
+
+		for (int i = 0; i < llist_count; i++) {
+			int llist_item;
+			cin >> llist_item;
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+			llist->insert_node(llist_item);
+		}
+
+		reversePrint(llist->head);
+	}
+
+	return 0;
 }
